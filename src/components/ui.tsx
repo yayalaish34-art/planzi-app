@@ -21,10 +21,17 @@ import { colors, radius, spacing, font, TAB_BAR_CLEARANCE } from '../theme';
 export function Screen({
   children,
   clearTabBar = true,
+  style,
 }: {
   children: ReactNode;
   // Modals (no tab bar) pass false to skip the extra bottom clearance.
   clearTabBar?: boolean;
+  /**
+   * Applied last, so a screen can paint its own ground. The assistant is the
+   * only one that does: she sits on lavender rather than the app's paper, and
+   * passes a transparent background so the gradient behind her shows through.
+   */
+  style?: StyleProp<ViewStyle>;
 }) {
   const insets = useSafeAreaInsets();
 
@@ -41,6 +48,7 @@ export function Screen({
           // I18nManager, and this agrees with it.
           direction: isRTL() ? 'rtl' : 'ltr',
         },
+        style,
       ]}
     >
       {children}

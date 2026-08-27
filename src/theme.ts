@@ -75,6 +75,39 @@ export const ROW_TILES: TileColor[] = ['green', 'blue', 'yellow'];
 export const IRIDESCENT = ['#8FC7FF', '#C3A6FF', '#FFB98E'] as const;
 
 /**
+ * The assistant's own world: violet on lavender.
+ *
+ * She is the one place in the app that isn't paper and pastel tiles — a voice
+ * screen with a lit mic in the middle of it — so she gets her own palette
+ * rather than borrowing the page's. It reaches exactly two places: her screen,
+ * and the mic button in the bottom bar that opens her.
+ *
+ * `gradient` replaces `IRIDESCENT` in the bar. The two are close cousins, but
+ * the sweep's peach stop read as an orange button, and the bar is now lit by
+ * the same violet the assistant is.
+ */
+export const VOICE = {
+  /** The page, top to bottom. */
+  bg: ['#FAF9FD', '#F2F0FA'] as const,
+  ink: '#1E1E32',
+  /** Her own words, a shade lighter than the user's on a tinted ground. */
+  inkSoft: '#3A3A50',
+  muted: '#9B9AAE',
+  /** The mic glyph, the undo arrow, the taken time slot. */
+  violet: '#6A5AE0',
+  violetSoft: '#8E7BEA',
+  /** Her bubble. The user's is white. */
+  bubble: '#E2DBF6',
+  surface: '#FFFFFF',
+  /** The raised mic in the bar, and the disc under the selected tab. */
+  gradient: ['#BFAEF5', '#9B8CEE', '#7FA8EF'] as const,
+  /** The send button in the composer. */
+  send: ['#C9B9F7', '#A38DEE'] as const,
+  /** Everything white floats on the lavender rather than sitting on it. */
+  shadow: '#4C3E91',
+} as const;
+
+/**
  * The gradient, unpacked into surfaces and marks.
  *
  * Home used to mix sage green and butter yellow with a sky/lilac/peach
