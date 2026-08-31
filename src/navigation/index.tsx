@@ -15,7 +15,7 @@ import Svg, {
   Stop,
 } from 'react-native-svg';
 
-import { colors, NAV_BAR, VOICE } from '../theme';
+import { colors, NAV_BAR, IRIDESCENT } from '../theme';
 import { t } from '../lib/i18n';
 import { playTapSound } from '../lib/tapSound';
 import TodayScreen from '../screens/TodayScreen';
@@ -133,9 +133,9 @@ function barPath(width: number, dy = 0) {
 }
 
 /**
- * One tab's glyph. The selected one sits on a disc of the assistant's violet —
- * the same light as the mic button beside it — and pops in with a small spring
- * when the selection lands on it.
+ * One tab's glyph. The selected one sits on a disc of the green-blue-yellow
+ * sweep — the same light as the mic button and Home's chosen day — and pops in
+ * with a small spring when the selection lands on it.
  */
 function TabGlyph({ Icon, active }: { Icon: typeof House; active: boolean }) {
   const v = useRef(new Animated.Value(active ? 1 : 0)).current;
@@ -156,7 +156,7 @@ function TabGlyph({ Icon, active }: { Icon: typeof House; active: boolean }) {
     >
       {active ? (
         <LinearGradient
-          colors={VOICE.gradient}
+          colors={IRIDESCENT}
           start={{ x: 0.1, y: 0.1 }}
           end={{ x: 0.9, y: 0.95 }}
           style={styles.tabDisc}
@@ -173,7 +173,7 @@ function TabGlyph({ Icon, active }: { Icon: typeof House; active: boolean }) {
 }
 
 /**
- * Bottom bar: four outline icons around a raised holographic mic button in the middle.
+ * Bottom bar: four outline icons around a raised gradient mic button in the middle.
  *
  * The button isn't a slot in the row — it floats above the bar, and the bar's
  * top edge scoops down to clear it. The scoop is centred on the bar, so it
@@ -310,10 +310,10 @@ function BottomBar({ state, descriptors, navigation }: BottomTabBarProps) {
           ]}
         />
         <Animated.View style={[styles.fabFillWrap, { transform: [{ scale: pop }] }]}>
-          {/* The assistant's violet, with ink on top rather than white: at
-              this size a white glyph on the mid-tone lands under 3:1. */}
+          {/* The green-blue-yellow sweep, with ink on top — the
+              pastels are light enough that a white glyph would wash out. */}
           <LinearGradient
-            colors={VOICE.gradient}
+            colors={IRIDESCENT}
             start={{ x: 0.1, y: 0.1 }}
             end={{ x: 0.9, y: 0.95 }}
             style={styles.fabFill}
@@ -473,11 +473,11 @@ const styles = StyleSheet.create({
     width: FAB_SIZE,
     height: FAB_SIZE,
     borderRadius: FAB_R,
-    backgroundColor: VOICE.gradient[1],
+    backgroundColor: IRIDESCENT[1],
     // Its own glow, in its own colour — the button floats above the panel the
     // way the panel floats above the page. Kept tight: a wide one spills into
     // the gap around the scoop and muddies the edge the scoop is there to make.
-    shadowColor: VOICE.gradient[1],
+    shadowColor: IRIDESCENT[1],
     shadowOffset: { width: 0, height: 6 },
     shadowOpacity: 0.45,
     shadowRadius: 11,
@@ -491,7 +491,7 @@ const styles = StyleSheet.create({
     insetInlineEnd: 0,
     bottom: 0,
     borderRadius: FAB_R,
-    backgroundColor: VOICE.gradient[1],
+    backgroundColor: IRIDESCENT[1],
   },
   fabFillWrap: { width: '100%', height: '100%' },
   fabFill: {
